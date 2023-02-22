@@ -1,5 +1,5 @@
 // creating CoinTest class
-public class CoinDriver {
+public class CoinTest {
     // creating main function
     public static void main(String[] args) {
         Coin userCoin = new Coin();
