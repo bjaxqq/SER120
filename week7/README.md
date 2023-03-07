@@ -7,5 +7,4 @@
 
 ### Projects:
 * Collatz Conjecture
-* Craps
 * Assignment 2
