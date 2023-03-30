@@ -17,8 +17,6 @@ Discuss the toString method of a class and show its implementation for a design 
 Discuss double initialization of array of objects
 
 ### Examples Used
-[Card](https://github.com/pdeitel/JavaHowToProgram11e_EarlyObjects/blob/master/examples/ch07/fig07_09_11/Card.java)
-
-[DeckOfCards](https://github.com/pdeitel/JavaHowToProgram11e_EarlyObjects/blob/master/examples/ch07/fig07_09_11/DeckOfCards.java)
-
+[Card](https://github.com/pdeitel/JavaHowToProgram11e_EarlyObjects/blob/master/examples/ch07/fig07_09_11/Card.java)\
+[DeckOfCards](https://github.com/pdeitel/JavaHowToProgram11e_EarlyObjects/blob/master/examples/ch07/fig07_09_11/DeckOfCards.java)\
 [DeckOfCardsTest](https://github.com/pdeitel/JavaHowToProgram11e_EarlyObjects/blob/master/examples/ch07/fig07_09_11/DeckOfCardsTest.java)
