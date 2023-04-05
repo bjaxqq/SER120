@@ -1,5 +1,3 @@
-package finalProject;
-
 public class Card {
 	
 	// Defining the private instance variables that will hold the face and suit
