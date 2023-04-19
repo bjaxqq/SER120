@@ -1,6 +1,6 @@
 package week12.Shape;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape { // Inheriting from Shape
     // Constructor for Rectangle
     public Rectangle(double height, double width) {
         super(height, width); // Setting height and width
