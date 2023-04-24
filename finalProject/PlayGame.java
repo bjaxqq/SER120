@@ -5,28 +5,27 @@ public class PlayGame {
 		// Create a deck of cards
 		DeckOfCards deck = new DeckOfCards();
 		// Create scanner object
-		Scanner scanner = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		// Create boolean object to see if player wants to play again
 		boolean continueGame = true;
 		
 		do {
 			// Simulate the game
 			game(deck);
-			
-			//Check to see if player wants to play again
+			// Check to see if player wants to play again
 			System.out.println("\nWould you like to play again? (Y/N)");
-			String playAgain = scanner.nextLine();
+			String playAgain = scan.nextLine();
 			
 			// If player says no, quit game
 			// Otherwise continue
 			if(playAgain.toUpperCase().equals("N")) {
 				continueGame = false;
 				System.out.println("\nThanks for playing!");
-			}
-			
+			}	
 		} while(continueGame);
 	}
 	
+	// This simulates one game of blackjack
 	public static void game(DeckOfCards deck) {
 		// Create arrays that are big enough to hold any hand in blackjack
 		Card[] playerHand = new Card[11], dealerHand = new Card[11];
@@ -37,9 +36,9 @@ public class PlayGame {
 		// Create booleans to track is the player or dealer has gone bust
 		boolean playerBust = false, dealerBust = false;
 		// Create Scanner object
-		Scanner scanner = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
 		
-		// Shuffle the deck
+		//Shuffle the deck
 		deck.shuffle();
 		
 		// Deal first two cards each to player and dealer
@@ -52,11 +51,12 @@ public class PlayGame {
 		dealerHand[dealerHandIndex++] = deck.dealCard();
 		
 		// Calculate and print out player's hand
-		System.out.print("Your hand is: ");
-		printHand(playerHand);
+		System.out.println("Your hand is: ");
+		printCard(playerHand);
 		playerHandVal = calculateHand(playerHand);
-		System.out.println("Your hand value is " + playerHandVal + "\n");
+		System.out.println("Your hand value is "+playerHandVal+"\n");
 		
+		printCard(dealerHand);
 		dealerHandVal = calculateHand(dealerHand);
 		System.out.println("Dealer's hand value is " + dealerHandVal + "\n");
 		
@@ -73,9 +73,9 @@ public class PlayGame {
 		else if(playerHandVal > 21 && dealerHandVal <= 21) {
 			playerBust = true;
 			System.out.println("You went bust!");
-			System.out.println("You lost the game with " + playerHandVal+" points to the dealer's " + dealerHandVal + " points.");
+			System.out.println("You lost the game with " + playerHandVal + " points to the dealer's " + dealerHandVal + " points.");
 		}
-		else if(dealerHandVal>21 && playerHandVal<=21) {
+		else if(dealerHandVal > 21 && playerHandVal <= 21) {
 			dealerBust = true;
 			System.out.println("The dealer went bust!");
 			System.out.println("You won the game with " + playerHandVal + " points to the dealer's " + dealerHandVal + " points.");
@@ -89,17 +89,21 @@ public class PlayGame {
 		while(!playerBust && !dealerBust && hit) {
 			// Ask player if they would like another card
 			System.out.println("Would you like another card? (Y/N)");
-			String answer = scanner.nextLine();
+			String answer = scan.nextLine();
 			
 			if(answer.toUpperCase().equals("Y")) {
+				System.out.println("\nYou took a new card.");
 				playerHand[playerHandIndex++] = deck.dealCard();
-				System.out.print("\nYour hand is: ");
-				printHand(playerHand);
+				System.out.println("\nYour new hand is: ");
+				printCard(playerHand);
 				playerHandVal = calculateHand(playerHand);
 				System.out.println("Your hand value is " + playerHandVal);
 			}
 			else {
 				System.out.println("\nYou stayed.");
+				System.out.println("\nYour hand is: ");
+				printCard(playerHand);
+				System.out.println("Your hand value is " + playerHandVal);
 				// If the dealer's hand value is 17 or above, they will stay
 				// If both the player and dealer stay, the game is over
 				if(dealerHandVal >= 17) {
@@ -114,11 +118,16 @@ public class PlayGame {
 			if(dealerHandVal <= 16) {
 				System.out.println("\nThe dealer took a new card.");
 				dealerHand[dealerHandIndex++] = deck.dealCard();
+				System.out.println("\nThe dealer's hand is: ");
+				printCard(dealerHand);
 				dealerHandVal = calculateHand(dealerHand);
 				System.out.println("Dealer's hand value is " + dealerHandVal + "\n");
 			}
 			else {
 				System.out.println("\nThe dealer stayed.");
+				System.out.println("\nThe dealer's hand is: ");
+				printCard(dealerHand);
+				System.out.println("Dealer's hand value is "+dealerHandVal + "\n");
 			}
 			
 			// Check if anybody went bust
@@ -131,7 +140,7 @@ public class PlayGame {
 			else if(playerHandVal > 21 && dealerHandVal <= 21) {
 				playerBust = true;
 				System.out.println("You went bust!");
-				System.out.println("You lost the game with " + playerHandVal+" points to the dealer's " + dealerHandVal + " points.");
+				System.out.println("You lost the game with " + playerHandVal + " points to the dealer's " + dealerHandVal + " points.");
 			}
 			else if(dealerHandVal > 21 && playerHandVal <= 21) {
 				dealerBust = true;
@@ -146,78 +155,184 @@ public class PlayGame {
 			if(playerHandVal > dealerHandVal) {
 				System.out.println("\nYou won the game with " + playerHandVal + " points to the dealer's " + dealerHandVal + " points.");
 			}
-			else if(dealerHandVal>playerHandVal) {
+			else if(dealerHandVal > playerHandVal) {
 				System.out.println("\nYou lost the game with " + playerHandVal + " points to the dealer's " + dealerHandVal + " points.");
 			}
 			else {
 				System.out.println("\nYou tied the game with " + playerHandVal + " points to the dealer's " + dealerHandVal + " points.");
 			}
-		}	
+		}
 	}
 	
-	public static void printHand(Card[] hand) {
-		// Create a for loop that goes through the whole hand
+	// This prints out the cards of a hand
+	public static void printCard(Card[] hand) {
 		for(int index = 0; index < hand.length; index++) {
 			// If the card is not null, print it out
 			if(hand[index] != null) {
-				System.out.print(hand[index]);
-				// Only print out a comma after the card name if it's not the last card in our hand. 
-				// The index+1 could cause an index out of bounds exception here, but I used short circuiting with
-				// the first condition to ensure that index+1 would never cause an index out of bounds exception.
-				if(index != hand.length-1 && hand[index+1] != null) {
-					System.out.print(", ");
+				// Create a string variable to represent the face of a card
+				String face = "";
+				
+				// Check the face of the card at index and set
+				// the face variable equal to the face of the card at index
+				if(hand[index].getFace() == "Ace") {
+					face = "1";
+				}
+				else if(hand[index].getFace() == "Deuce") {
+					face = "2";
+				}
+				else if(hand[index].getFace() == "Three") {
+					face = "3";
+				}
+				else if(hand[index].getFace() == "Four") {
+					face = "4";
+				}
+				else if(hand[index].getFace() == "Five") {
+					face = "5";
+				}
+				else if(hand[index].getFace() == "Six") {
+					face = "6";
+				}
+				else if(hand[index].getFace() == "Seven") {
+					face = "7";
+				}
+				else if(hand[index].getFace() == "Eight") {
+					face = "8";
+				}
+				else if(hand[index].getFace() == "Nine") {
+					face = "9";
+				}
+				else if(hand[index].getFace() == "Ten") {
+					face = "10";
+				}
+				else if(hand[index].getFace() == "Jack") {
+					face = "J";
+				}
+				else if(hand[index].getFace() == "Queen") {
+					face = "Q";
+				}
+				else if(hand[index].getFace() == "King") {
+					face = "K";
+				}
+				
+				// Card will be printed out differently if
+				// face is 10 because that is the only face 
+				// value with two characters instead of one
+				if(face != "10") {
+					// Check the suit to accurately print out 
+					// the card with its correct suit
+					if(hand[index].getSuit() == "Hearts") {
+						System.out.println("------");
+						System.out.println("|" + face + "   |");
+						System.out.println("| ♥︎  |");
+						System.out.println("|   " + face + "|");
+						System.out.println("------");
+					}
+					else if(hand[index].getSuit() == "Diamonds") {
+						System.out.println("------");
+						System.out.println("|" + face + "   |");
+						System.out.println("| ♦︎  |");
+						System.out.println("|   " + face + "|");
+						System.out.println("------");
+					}
+					else if(hand[index].getSuit() == "Clubs") {
+						System.out.println("------");
+						System.out.println("|" + face + "   |");
+						System.out.println("| ♣︎  |");
+						System.out.println("|   " + face + "|");
+						System.out.println("------");
+					}
+					else if(hand[index].getSuit() == "Spades") {
+						System.out.println("------");
+						System.out.println("|" + face + "   |");
+						System.out.println("| ♠︎  |");
+						System.out.println("|   " + face + "|");
+						System.out.println("------");
+					}
+				}
+				else {
+					// Check the suit to accurately print out 
+					// the card with its correct suit
+					if(hand[index].getSuit() == "Hearts") {
+						System.out.println("------");
+						System.out.println("|" + face + "  |");
+						System.out.println("| ♥︎  |");
+						System.out.println("|  " + face + "|");
+						System.out.println("------");
+					}
+					else if(hand[index].getSuit() == "Diamonds") {
+						System.out.println("------");
+						System.out.println("|" + face + "  |");
+						System.out.println("| ♦︎  |");
+						System.out.println("|  " + face + "|");
+						System.out.println("------");
+					}
+					else if(hand[index].getSuit() == "Clubs") {
+						System.out.println("------");
+						System.out.println("|" + face + "  |");
+						System.out.println("| ♣︎  |");
+						System.out.println("|  " + face + "|");
+						System.out.println("------");
+					}
+					else if(hand[index].getSuit() == "Spades") {
+						System.out.println("------");
+						System.out.println("|" + face + "  |");
+						System.out.println("| ♠︎  |");
+						System.out.println("|  "+ face +"|");
+						System.out.println("------");
+					}
 				}
 			}
 		}
 		System.out.print("\n");
 	}
 	
+	// This calculates the value of a hand
 	public static int calculateHand(Card[] hand) {
 		// Create a variable to track the value of the hand
 		int value = 0;
 		// Create a loop to go through the whole hand
-		for(int index=0;index<hand.length;index++) {
+		for(int index = 0; index < hand.length; index++) {
 			// If the card is not null, check its face 
 			// and add the appropriate value to the value variable
 			if(hand[index]!=null) {
-				if(hand[index].getFace()=="Ace") {
-					value += 1;
+				if(hand[index].getFace() == "Ace") {
+					value+=1;
 				}
-				if(hand[index].getFace()=="Deuce") {
-					value += 2;
+				if(hand[index].getFace() == "Deuce") {
+					value+=2;
 				}
-				if(hand[index].getFace()=="Three") {
-					value += 3;
+				if(hand[index].getFace() == "Three") {
+					value+=3;
 				}
-				if(hand[index].getFace()=="Four") {
-					value += 4;
+				if(hand[index].getFace() == "Four") {
+					value+=4;
 				}
-				if(hand[index].getFace()=="Five") {
-					value += 5;
+				if(hand[index].getFace() == "Five") {
+					value+=5;
 				}
-				if(hand[index].getFace()=="Six") {
-					value += 6;
+				if(hand[index].getFace() == "Six") {
+					value+=6;
 				}
-				if(hand[index].getFace()=="Seven") {
-					value += 7;
+				if(hand[index].getFace() == "Seven") {
+					value+=7;
 				}
-				if(hand[index].getFace()=="Eight") {
-					value += 8;
+				if(hand[index].getFace() == "Eight") {
+					value+=8;
 				}
-				if(hand[index].getFace()=="Nine") {
-					value += 9;
+				if(hand[index].getFace() == "Nine") {
+					value+=9;
 				}
-				if(hand[index].getFace()=="Ten") {
-					value += 10;
+				if(hand[index].getFace() == "Ten") {
+					value+=10;
 				}
-				if(hand[index].getFace()=="Jack") {
-					value += 11;
+				if(hand[index].getFace() == "Jack") {
+					value+=11;
 				}
-				if(hand[index].getFace()=="Queen") {
-					value += 12;
+				if(hand[index].getFace() == "Queen") {
+					value+=12;
 				}
-				if(hand[index].getFace()=="King") {
-					value += 13;
+				if(hand[index].getFace() == "King") {
+					value+=13;
 				}
 			}
 		}
