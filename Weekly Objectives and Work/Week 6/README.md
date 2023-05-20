@@ -6,7 +6,7 @@
 - Use random number generation for roll of a fair six-sided die to demonstrate probability distribution
 - “return” statement: returning singular vs. multiple values from a method
 - Logical operators: “&&”, “||” and “!”
-- Use of “break”: program to find if a number $n$ is prime or not; loop from 2 to $sqrt{n}$
+- Use of “break”: program to find if a number $n$ is prime or not; loop from 2 to $\sqrt{n}$
 
 ### Learning Objectives
 - Demonstrate the implementation of switch-case-default statement.
