@@ -1,5 +1,9 @@
 # Assignment 2
 
+Note: Please refer to the grading rubric in the Syllabus. 
+
+Do not forget to adequately comment and use “this” reference. Follow the styling guidelines. 
+
 ### Q1
 
 ##### Assignment:
