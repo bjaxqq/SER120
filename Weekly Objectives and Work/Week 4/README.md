@@ -26,7 +26,6 @@
     - https://app.diagrams.net/
     - https://www.smartdraw.com/uml-diagram/uml-diagram-tool.htm
 - Class practice:
-    Problem Description:
     
     Create a class called Invoice that a hardware store might use to represent an invoice for an item sold at the store. An Invoice should include four pieces of information as instance variables—a part number (type String), a part description (type String), a quantity of the item being purchased (type int) and a price per item (double).
     
