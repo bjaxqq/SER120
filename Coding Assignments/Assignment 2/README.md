@@ -6,10 +6,10 @@ Do not forget to adequately comment and use “this” reference. Follow the sty
 
 ### Q1
 
-##### Assignment:
+##### Instructions
 Given the code for craps we already created, write the application so that it runs 1,000,000 times and counts the wins and losses as well as the percentage of times the user wins and loses.
 
-##### Additional Questions:
+##### Additional Questions
 - How many games are won on the first roll, second roll, ... , twentieth roll and after the twentieth roll?
 - How many games are lost on the first roll, second roll, ... , twentieth roll and after the twentieth roll?
 - What are the chances of winning at craps? [Note: You should discover that craps is one of the fairest casino games. What do you suppose this means?]
@@ -20,7 +20,7 @@ Submit your source code & test-run screenshots (JPG/PNG) to support your answers
 
 ### Q2
 
-##### Assignment:
+##### Instructions
 In this problem, you'll recreate the classic race of the tortoise and the hare. You'll use random-number generation to develop a simulation of this memorable event. Our contenders begin the race at position 1 of 70 positions. Each position represents a possible location along the racecourse. The finish line is at position 70. The first contender to reah or pass position 70 is rewarded with a paoil of fresh carrots and lettuce. The course weaves its way up the side of a slippery mountain, so occasionally the contenders lose ground. A clock ticks once per second. With each tick of the clock, your application should adjust the position of the animals according to the rules in the Fig. Use variables to keep track of the positions of the animals (i.e., position numbers are 1-70). Start each animal at position 1 (the "starting gate"). If an animal slip left before square 1, move it back to square 1.
 
 | Animal | Move type | Percentage of the time | Actual move |
