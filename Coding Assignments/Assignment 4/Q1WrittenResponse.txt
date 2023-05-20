@@ -1,0 +1,34 @@
+Based on your understanding of the material discuss in detail (in your own words): [In 500 words total]
+
+- What do you understand by Inheritance?
+    - A new class can be based on an existing class and take its properties according to inheritance in Java. 
+    - This new class is the derived class or subclass, and the existing class is the base class or superclass. 
+    - The superclass public properties are passed down to the subclass, which is free to utilize them just like its own.
+
+- Why declaring data as protected doesn’t serve any meaningful purpose?
+    - Declaring data as protected does not serve any meaningful purpose because it violates encapsulation, 
+    - which states that data should be private to the class that defines it.
+    - The purpose of encapsulation is to protect data from being modified by unauthorized code,
+    - ensuring that the internal state of an object is consistent. 
+    - When data is declared as protected, they can be accessed and modified, 
+    - which can potentially violate the internal state of the base class. 
+
+- How a method is searched and called in an inheritance hierarchy?
+    - When a method is called on an object of a derived class in an inheritance hierarchy,
+    - the search for the method begins in the derived class.
+    - If the method isn't present in the derived class, the search moves on to the base class,
+    - and so on, until the method is discovered or the search reaches the topmost class
+    - (in Java, this is typically the Object class). 
+    - The method is called and carried out if it is located in the derived class. 
+    - The method is called and performed if it is present in one of the base classes but not in the derived class.
+
+- How does constructor calling work in an inheritance hierarchy?
+    - A derived class's constructor must invoke the constructor of its base class when 
+    - it is constructed in order to initialize the inherited members. 
+    - Constructor calling or constructor chaining are terms used to describe this procedure. 
+    - The base class's constructor can be explicitly called by the derived class by using 
+    - the super keyword and the relevant parameter list.
+    - The compiler automatically inserts a call to the base class's default constructor 
+    - if the derived class does not explicitly call a constructor from the base class. 
+    - The derived class must explicitly invoke one of the base class's available constructors
+    - if the base class does not contain a default constructor.
