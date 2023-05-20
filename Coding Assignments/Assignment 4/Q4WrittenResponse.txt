@@ -1,0 +1,42 @@
+- The four card suits are represented by the program's representation of a deck of playing cards. 
+- The software uses a GUI that shows the cards using Swing. 
+- Arrays of Card objects are used to represent the deck of cards; each Card object contains a face, suit, and image attribute. 
+- The four suits are shown in a grid format in a window that is made possible by the CardDisplay class, which extends JFrame. 
+- Using a JLabel component and an ImageIcon, each suit is shown. 
+- The software uses a CardDisplayMouseClicks object to change the image displayed to a randomly chosen card from the appropriate deck of cards when the user clicks on a suit.
+
+Algorithm:
+
+- Create the Card class that has face, suit, and image properties.
+- Create the CardDisplay class that extends JFrame.
+
+In CardDisplay constructor:
+- Define face and suit arrays.
+- Populate four decks of cards with Card objects.
+- Set GridLayout of JFrame to 1x4.
+- Set size of JFrame to 1400x500.
+- Call createCardPanels method.
+- Set JFrame to visible.
+
+In createCardPanels method:
+- Create JLabel components for each suit.
+- Create ImageIcon for each suit using image of first card in respective deck.
+- Set icon of JLabels to respective ImageIcon.
+- Add JLabels to JFrame.
+- Add MouseListener to JLabels using CardDisplayMouseClicks object.
+
+- Create CardDisplayMouseClicks class that extends MouseAdapter.
+
+In the CardDisplayMouseClicks constructor:
+- Set deck and imageLabel properties.
+
+Override mouseClicked method to:
+- Get random integer nextCard between 0 and 12.
+- Set icon of imageLabel to image of card at index nextCard in respective deck.
+
+The program flow is as follows:
+- The main method in the CardDisplayTest class is called.
+- A new CardDisplay object is created, which creates a JFrame window with four JLabel components.
+- The createCardPanels method is called, which adds the JLabel components to the JFrame and sets a MouseListener to each one using a CardDisplayMouseClicks object.
+- The mouseClicked method of the CardDisplayMouseClicks object is called when a user clicks on a JLabel.
+- A random integer is generated, and the image of the card at the respective index is displayed.
