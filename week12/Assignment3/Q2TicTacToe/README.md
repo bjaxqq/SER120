@@ -1,4 +1,0 @@
-# Tic Tac Toe
-
-### Instructions
- Create a class TicTacToe that will enable you to write a program to play Tic-Tac-Toe. The class contains a private 3-by-3 two-dimensional integer array where 1 represents X, 0 represents available/empty, -1 represents O. The constructor should initialize the board elements to empty. Allow two human players. Wherever the first player moves, place a 1 in the specified square, and place a -1 wherever the second player moves. Each move must be to an empty square. After each move, determine whether the game has been won and whether it’s a draw. If it is a win, then print which player won and if it’s a draw then reinitialize the array to empty and restart the game: this could be done using a sentinel controlled loop. You are provided with a class <TicTacToePrinter> which contains a method <printBoard(int array[][])> that takes an argument of your array and prints the board. Use this method to print the board after every move.
