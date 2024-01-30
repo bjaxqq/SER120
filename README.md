@@ -6,4 +6,4 @@ This course serves as an introduction to the principles of design and developmen
 
 ### Tools and Languages Used
 
-This course used Java to explore how its visuals can be used to make interfaces and other visual creations. Coding was done in Visual Studio Code.
+This course used Java to explore how its visuals can be used to make interfaces and other visual creations. Coding was done in Eclipse.
